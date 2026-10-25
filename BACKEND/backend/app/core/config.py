@@ -24,10 +24,11 @@ class Settings(BaseSettings):
     environment: Literal["development", "test", "production"] = "development"
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
     api_prefix: str = "/api/v1"
-    allowed_hosts: list[str] = Field(
-        default_factory=lambda: ["localhost", "127.0.0.1", "testserver"]
-    )
-
+    allowed_hosts: list[str] = [
+    "localhost",
+    "127.0.0.1",
+    "journal-reviewer-simulator-1.onrender.com",
+]
     @field_validator("api_prefix")
     @classmethod
     def validate_api_prefix(cls, value: str) -> str:
